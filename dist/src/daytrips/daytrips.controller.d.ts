@@ -1,0 +1,104 @@
+import { DaytripsService } from './daytrips.service';
+export declare class DaytripsController {
+    private readonly daytripsService;
+    constructor(daytripsService: DaytripsService);
+    getAllDaytrips(): Promise<{
+        id: string;
+        createdAt: Date;
+        updatedAt: Date;
+        title: string;
+        description: string | null;
+        price: number;
+        duration: string;
+        horaSalida: string | null;
+        horaRetorno: string | null;
+        published: boolean;
+        ownerId: string;
+        images: string | null;
+    }[]>;
+    createReservation(body: any, req: any): Promise<{
+        id: string;
+        bookingNumber: string | null;
+        userId: string;
+        daytripId: string;
+        status: string;
+        totalPrice: number;
+        currency: string;
+        paymentProvider: string | null;
+        paymentReference: string | null;
+        paymentStatus: string;
+        paymentCheckoutUrl: string | null;
+        createdAt: Date;
+        updatedAt: Date;
+    }>;
+    getMyDaytrips(req: any): Promise<{
+        id: string;
+        createdAt: Date;
+        updatedAt: Date;
+        title: string;
+        description: string | null;
+        price: number;
+        duration: string;
+        horaSalida: string | null;
+        horaRetorno: string | null;
+        published: boolean;
+        ownerId: string;
+        images: string | null;
+    }[]>;
+    createDaytrip(body: any, req: any): Promise<{
+        id: string;
+        createdAt: Date;
+        updatedAt: Date;
+        title: string;
+        description: string | null;
+        price: number;
+        duration: string;
+        horaSalida: string | null;
+        horaRetorno: string | null;
+        published: boolean;
+        ownerId: string;
+        images: string | null;
+    }>;
+    getDaytrip(id: string): Promise<{
+        id: string;
+        createdAt: Date;
+        updatedAt: Date;
+        title: string;
+        description: string | null;
+        price: number;
+        duration: string;
+        horaSalida: string | null;
+        horaRetorno: string | null;
+        published: boolean;
+        ownerId: string;
+        images: string | null;
+    }>;
+    updateDaytrip(id: string, body: any, req: any): Promise<{
+        id: string;
+        createdAt: Date;
+        updatedAt: Date;
+        title: string;
+        description: string | null;
+        price: number;
+        duration: string;
+        horaSalida: string | null;
+        horaRetorno: string | null;
+        published: boolean;
+        ownerId: string;
+        images: string | null;
+    }>;
+    deleteDaytrip(id: string, req: any): Promise<{
+        id: string;
+        createdAt: Date;
+        updatedAt: Date;
+        title: string;
+        description: string | null;
+        price: number;
+        duration: string;
+        horaSalida: string | null;
+        horaRetorno: string | null;
+        published: boolean;
+        ownerId: string;
+        images: string | null;
+    }>;
+}

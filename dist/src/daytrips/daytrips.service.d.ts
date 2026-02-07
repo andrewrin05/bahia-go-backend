@@ -1,0 +1,104 @@
+import { PrismaService } from '../prisma/prisma.service';
+export declare class DaytripsService {
+    private prisma;
+    constructor(prisma: PrismaService);
+    getAllDaytrips(): Promise<{
+        id: string;
+        createdAt: Date;
+        updatedAt: Date;
+        title: string;
+        description: string | null;
+        price: number;
+        duration: string;
+        horaSalida: string | null;
+        horaRetorno: string | null;
+        published: boolean;
+        ownerId: string;
+        images: string | null;
+    }[]>;
+    createReservation(data: any, userId: string): Promise<{
+        id: string;
+        bookingNumber: string | null;
+        userId: string;
+        daytripId: string;
+        status: string;
+        totalPrice: number;
+        currency: string;
+        paymentProvider: string | null;
+        paymentReference: string | null;
+        paymentStatus: string;
+        paymentCheckoutUrl: string | null;
+        createdAt: Date;
+        updatedAt: Date;
+    }>;
+    getMyDaytrips(userId: string): Promise<{
+        id: string;
+        createdAt: Date;
+        updatedAt: Date;
+        title: string;
+        description: string | null;
+        price: number;
+        duration: string;
+        horaSalida: string | null;
+        horaRetorno: string | null;
+        published: boolean;
+        ownerId: string;
+        images: string | null;
+    }[]>;
+    createDaytrip(data: any, userId: string): Promise<{
+        id: string;
+        createdAt: Date;
+        updatedAt: Date;
+        title: string;
+        description: string | null;
+        price: number;
+        duration: string;
+        horaSalida: string | null;
+        horaRetorno: string | null;
+        published: boolean;
+        ownerId: string;
+        images: string | null;
+    }>;
+    getDaytrip(id: string): Promise<{
+        id: string;
+        createdAt: Date;
+        updatedAt: Date;
+        title: string;
+        description: string | null;
+        price: number;
+        duration: string;
+        horaSalida: string | null;
+        horaRetorno: string | null;
+        published: boolean;
+        ownerId: string;
+        images: string | null;
+    }>;
+    updateDaytrip(id: string, data: any, userId: string, role?: string): Promise<{
+        id: string;
+        createdAt: Date;
+        updatedAt: Date;
+        title: string;
+        description: string | null;
+        price: number;
+        duration: string;
+        horaSalida: string | null;
+        horaRetorno: string | null;
+        published: boolean;
+        ownerId: string;
+        images: string | null;
+    }>;
+    deleteDaytrip(id: string, userId: string): Promise<{
+        id: string;
+        createdAt: Date;
+        updatedAt: Date;
+        title: string;
+        description: string | null;
+        price: number;
+        duration: string;
+        horaSalida: string | null;
+        horaRetorno: string | null;
+        published: boolean;
+        ownerId: string;
+        images: string | null;
+    }>;
+}

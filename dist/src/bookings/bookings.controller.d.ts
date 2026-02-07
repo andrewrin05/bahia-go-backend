@@ -1,0 +1,308 @@
+import { BookingsService } from './bookings.service';
+export declare class BookingsController {
+    private readonly bookingsService;
+    constructor(bookingsService: BookingsService);
+    createDaytrip(req: any, createBookingDaytripDto: any): Promise<{
+        daytrip: {
+            id: string;
+            createdAt: Date;
+            updatedAt: Date;
+            title: string;
+            description: string | null;
+            price: number;
+            duration: string;
+            horaSalida: string | null;
+            horaRetorno: string | null;
+            published: boolean;
+            ownerId: string;
+            images: string | null;
+        };
+    } & {
+        id: string;
+        bookingNumber: string | null;
+        userId: string;
+        daytripId: string;
+        status: string;
+        totalPrice: number;
+        currency: string;
+        paymentProvider: string | null;
+        paymentReference: string | null;
+        paymentStatus: string;
+        paymentCheckoutUrl: string | null;
+        createdAt: Date;
+        updatedAt: Date;
+    }>;
+    findAllDaytrip(req: any): Promise<({
+        user: {
+            id: string;
+            createdAt: Date;
+            updatedAt: Date;
+            email: string;
+            role: string;
+            passwordHash: string | null;
+        };
+        daytrip: {
+            id: string;
+            createdAt: Date;
+            updatedAt: Date;
+            title: string;
+            description: string | null;
+            price: number;
+            duration: string;
+            horaSalida: string | null;
+            horaRetorno: string | null;
+            published: boolean;
+            ownerId: string;
+            images: string | null;
+        };
+    } & {
+        id: string;
+        bookingNumber: string | null;
+        userId: string;
+        daytripId: string;
+        status: string;
+        totalPrice: number;
+        currency: string;
+        paymentProvider: string | null;
+        paymentReference: string | null;
+        paymentStatus: string;
+        paymentCheckoutUrl: string | null;
+        createdAt: Date;
+        updatedAt: Date;
+    })[]>;
+    findOneDaytrip(id: string): Promise<{
+        user: {
+            id: string;
+            createdAt: Date;
+            updatedAt: Date;
+            email: string;
+            role: string;
+            passwordHash: string | null;
+        };
+        daytrip: {
+            id: string;
+            createdAt: Date;
+            updatedAt: Date;
+            title: string;
+            description: string | null;
+            price: number;
+            duration: string;
+            horaSalida: string | null;
+            horaRetorno: string | null;
+            published: boolean;
+            ownerId: string;
+            images: string | null;
+        };
+    } & {
+        id: string;
+        bookingNumber: string | null;
+        userId: string;
+        daytripId: string;
+        status: string;
+        totalPrice: number;
+        currency: string;
+        paymentProvider: string | null;
+        paymentReference: string | null;
+        paymentStatus: string;
+        paymentCheckoutUrl: string | null;
+        createdAt: Date;
+        updatedAt: Date;
+    }>;
+    updateDaytrip(id: string, updateBookingDaytripDto: any): Promise<{
+        id: string;
+        bookingNumber: string | null;
+        userId: string;
+        daytripId: string;
+        status: string;
+        totalPrice: number;
+        currency: string;
+        paymentProvider: string | null;
+        paymentReference: string | null;
+        paymentStatus: string;
+        paymentCheckoutUrl: string | null;
+        createdAt: Date;
+        updatedAt: Date;
+    }>;
+    removeDaytrip(id: string): Promise<{
+        id: string;
+        bookingNumber: string | null;
+        userId: string;
+        daytripId: string;
+        status: string;
+        totalPrice: number;
+        currency: string;
+        paymentProvider: string | null;
+        paymentReference: string | null;
+        paymentStatus: string;
+        paymentCheckoutUrl: string | null;
+        createdAt: Date;
+        updatedAt: Date;
+    }>;
+    updateExistingBookingNumbers(): Promise<{
+        message: string;
+    }>;
+    create(req: any, createBookingDto: any): Promise<{
+        boat: {
+            id: string;
+            createdAt: Date;
+            updatedAt: Date;
+            name: string;
+            description: string | null;
+            price: number;
+            published: boolean;
+            ownerId: string;
+            images: string | null;
+            type: string;
+            pricePerDay: number;
+            location: string;
+            neighborhood: string | null;
+            latitude: number | null;
+            longitude: number | null;
+            capacity: number;
+            imageUrl: string | null;
+            available: boolean;
+        };
+    } & {
+        id: string;
+        bookingNumber: string | null;
+        userId: string;
+        status: string;
+        totalPrice: number;
+        currency: string;
+        paymentProvider: string | null;
+        paymentReference: string | null;
+        paymentStatus: string;
+        paymentCheckoutUrl: string | null;
+        createdAt: Date;
+        updatedAt: Date;
+        boatId: string;
+        startDate: Date;
+        endDate: Date;
+    }>;
+    findAll(req: any): Promise<({
+        user: {
+            id: string;
+            createdAt: Date;
+            updatedAt: Date;
+            email: string;
+            role: string;
+            passwordHash: string | null;
+        };
+        boat: {
+            id: string;
+            createdAt: Date;
+            updatedAt: Date;
+            name: string;
+            description: string | null;
+            price: number;
+            published: boolean;
+            ownerId: string;
+            images: string | null;
+            type: string;
+            pricePerDay: number;
+            location: string;
+            neighborhood: string | null;
+            latitude: number | null;
+            longitude: number | null;
+            capacity: number;
+            imageUrl: string | null;
+            available: boolean;
+        };
+    } & {
+        id: string;
+        bookingNumber: string | null;
+        userId: string;
+        status: string;
+        totalPrice: number;
+        currency: string;
+        paymentProvider: string | null;
+        paymentReference: string | null;
+        paymentStatus: string;
+        paymentCheckoutUrl: string | null;
+        createdAt: Date;
+        updatedAt: Date;
+        boatId: string;
+        startDate: Date;
+        endDate: Date;
+    })[]>;
+    findOne(id: string): Promise<{
+        user: {
+            id: string;
+            createdAt: Date;
+            updatedAt: Date;
+            email: string;
+            role: string;
+            passwordHash: string | null;
+        };
+        boat: {
+            id: string;
+            createdAt: Date;
+            updatedAt: Date;
+            name: string;
+            description: string | null;
+            price: number;
+            published: boolean;
+            ownerId: string;
+            images: string | null;
+            type: string;
+            pricePerDay: number;
+            location: string;
+            neighborhood: string | null;
+            latitude: number | null;
+            longitude: number | null;
+            capacity: number;
+            imageUrl: string | null;
+            available: boolean;
+        };
+    } & {
+        id: string;
+        bookingNumber: string | null;
+        userId: string;
+        status: string;
+        totalPrice: number;
+        currency: string;
+        paymentProvider: string | null;
+        paymentReference: string | null;
+        paymentStatus: string;
+        paymentCheckoutUrl: string | null;
+        createdAt: Date;
+        updatedAt: Date;
+        boatId: string;
+        startDate: Date;
+        endDate: Date;
+    }>;
+    update(id: string, updateBookingDto: any): Promise<{
+        id: string;
+        bookingNumber: string | null;
+        userId: string;
+        status: string;
+        totalPrice: number;
+        currency: string;
+        paymentProvider: string | null;
+        paymentReference: string | null;
+        paymentStatus: string;
+        paymentCheckoutUrl: string | null;
+        createdAt: Date;
+        updatedAt: Date;
+        boatId: string;
+        startDate: Date;
+        endDate: Date;
+    }>;
+    remove(id: string): Promise<{
+        id: string;
+        bookingNumber: string | null;
+        userId: string;
+        status: string;
+        totalPrice: number;
+        currency: string;
+        paymentProvider: string | null;
+        paymentReference: string | null;
+        paymentStatus: string;
+        paymentCheckoutUrl: string | null;
+        createdAt: Date;
+        updatedAt: Date;
+        boatId: string;
+        startDate: Date;
+        endDate: Date;
+    }>;
+}
