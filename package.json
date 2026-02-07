@@ -6,7 +6,8 @@
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
-    "build": "node_modules/.bin/tsc -p tsconfig.json",
+    "build": "tsc -p tsconfig.json",
+    "postinstall": "npm install -g typescript",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "nest start",
     "start:dev": "nest start --watch",
