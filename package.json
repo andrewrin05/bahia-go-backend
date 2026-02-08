@@ -6,6 +6,7 @@
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
+    "preinstall": "rm -rf node_modules",
     "build": "tsc -p tsconfig.json",
     "postinstall": "npm install -g typescript",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
