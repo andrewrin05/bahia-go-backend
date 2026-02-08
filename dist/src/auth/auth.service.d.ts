@@ -12,11 +12,11 @@ export declare class AuthService {
         access_token: string;
         user: {
             id: string;
-            createdAt: Date;
-            updatedAt: Date;
             email: string;
             role: string;
             passwordHash: string | null;
+            createdAt: Date;
+            updatedAt: Date;
         };
     }>;
     private assignRole;
@@ -24,22 +24,22 @@ export declare class AuthService {
         access_token: string;
         user: {
             id: string;
-            createdAt: Date;
-            updatedAt: Date;
             email: string;
             role: string;
             passwordHash: string | null;
+            createdAt: Date;
+            updatedAt: Date;
         };
     }>;
     loginPassword(email: string, password: string): Promise<{
         access_token: string;
         user: {
             id: string;
-            createdAt: Date;
-            updatedAt: Date;
             email: string;
             role: string;
             passwordHash: string | null;
+            createdAt: Date;
+            updatedAt: Date;
         };
     }>;
     profile(userId: string): Promise<any>;

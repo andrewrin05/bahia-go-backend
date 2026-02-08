@@ -14,11 +14,11 @@ export declare class AuthController {
         access_token: string;
         user: {
             id: string;
-            createdAt: Date;
-            updatedAt: Date;
             email: string;
             role: string;
             passwordHash: string | null;
+            createdAt: Date;
+            updatedAt: Date;
         };
     }>;
     registerPassword(body: {
@@ -28,11 +28,11 @@ export declare class AuthController {
         access_token: string;
         user: {
             id: string;
-            createdAt: Date;
-            updatedAt: Date;
             email: string;
             role: string;
             passwordHash: string | null;
+            createdAt: Date;
+            updatedAt: Date;
         };
     }>;
     loginPassword(body: {
@@ -42,11 +42,11 @@ export declare class AuthController {
         access_token: string;
         user: {
             id: string;
-            createdAt: Date;
-            updatedAt: Date;
             email: string;
             role: string;
             passwordHash: string | null;
+            createdAt: Date;
+            updatedAt: Date;
         };
     }>;
     profile(req: any): Promise<any>;
