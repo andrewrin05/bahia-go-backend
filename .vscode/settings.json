@@ -7,6 +7,10 @@
         "npm install": true,
         "git commit": true,
         "git remote": true,
-        "npx expo": true
+        "npx expo": true,
+        "/^cd backend ; node -v ; npm -v ; npm ci$/": {
+            "approve": true,
+            "matchCommandLine": true
+        }
     }
 }

@@ -33,9 +33,10 @@
     "scheme": "bahiago",
     "extra": {
       "eas": {
-        "projectId": null
-      }
+        "projectId": "8bdbb46f-abb6-4a97-8c7e-7459d3d554c3"
+      },
+      "router": {}
     },
-    "owner": "bahiago"
+    "owner": "afrinconm0506"
   }
 }

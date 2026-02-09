@@ -10,3 +10,8 @@ app/.expo/
 expo-debug.log
 *.tmp
 *.swp
+.vercel
+.env*.local
+
+/android
+/ios

@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useMemo } from 'react';
+import { useSettings } from '../../providers/SettingsProvider';
 import { View, StyleSheet, Alert, ScrollView, Pressable } from 'react-native';
 import { Text, Button, Avatar } from 'react-native-paper';
 import { router } from 'expo-router';
