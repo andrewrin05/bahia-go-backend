@@ -24,8 +24,8 @@ const fallbackBaseURL = Platform.OS === 'android'
 
 // Forzar IP LAN manualmente si tienes problemas de red:
 // Cambia esta IP por la de tu PC en la red local si es necesario
-// URL pública de Railway para producción
-const API_BASE_URL = 'https://bahia-go-backend.up.railway.app'; // Cambia esto por tu URL real si es diferente
+// URL personalizada con dominio propio para producción
+const API_BASE_URL = 'https://api.bahiago.com'; // Dominio propio apuntando a Railway
 
 if (__DEV__) {
   console.log('[API] baseURL:', API_BASE_URL, {
