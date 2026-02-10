@@ -1,7 +1,7 @@
 {
   "name": "alquiler-backend",
   "version": "0.1.0",
-  "description": "Backend for AlquilerES app",
+  "description": "Backend for AlquilerES app - deploy trigger",
   "author": "",
   "private": true,
   "license": "UNLICENSED",
