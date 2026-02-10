@@ -1,0 +1,13 @@
+{
+  "expo": {
+    "owner": "afrinconm3008",
+    "extra": {
+      "eas": {
+        "projectId": "f047ec2d-79f5-40e2-abfe-17c566b5164c"
+      }
+    },
+    "android": {
+      "package": "com.afrinconm0506.bahiagobackend"
+    }
+  }
+}

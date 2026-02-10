@@ -25,7 +25,7 @@ const fallbackBaseURL = Platform.OS === 'android'
 // Forzar IP LAN manualmente si tienes problemas de red:
 // Cambia esta IP por la de tu PC en la red local si es necesario
 // URL personalizada con dominio propio para producción
-const API_BASE_URL = 'https://bahia-go-backend.vercel.app'; // Dominio de backend en Vercel
+const API_BASE_URL = 'https://bahia-go-backend-git-fix-npm-1ee7ab-gestions-projects-f7219778.vercel.app'; // Dominio de backend en Vercel
 
 if (__DEV__) {
   console.log('[API] baseURL:', API_BASE_URL, {

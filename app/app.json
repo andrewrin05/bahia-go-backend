@@ -32,11 +32,11 @@
     ],
     "scheme": "bahiago",
     "extra": {
+      "router": {},
       "eas": {
-        "projectId": "8bdbb46f-abb6-4a97-8c7e-7459d3d554c3"
-      },
-      "router": {}
+        "projectId": "b84f9dde-14c5-4240-9366-3f2fc0cf42f7"
+      }
     },
-    "owner": "afrinconm0506"
+    "owner": "afrinconm3008"
   }
 }
