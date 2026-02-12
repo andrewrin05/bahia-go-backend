@@ -1,44 +1,10 @@
-model BookingDaytrip {
-  id        String   @id @default(cuid())
-  bookingNumber String? @unique
-  userId    String
-  daytripId String
-  status    String   @default("pending") // pending, confirmed, cancelled
-  totalPrice Float
-  currency   String   @default("COP")
-  paymentProvider String? @default("none")
-  paymentReference String?
-  paymentStatus String   @default("pending") // pending, pending_payment, paid, failed, cancelled
-  paymentCheckoutUrl String?
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  user User @relation(fields: [userId], references: [id])
-  daytrip Daytrip @relation(fields: [daytripId], references: [id], onDelete: Cascade)
-}
-model Daytrip {
-  id          String   @id @default(cuid())
-  title       String
-  description String?
-  price       Float
-  duration    String
-  horaSalida  String?
-  horaRetorno String?
-  published   Boolean  @default(false)
-  ownerId     String
-  owner       User     @relation(fields: [ownerId], references: [id])
-  images      String?
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
-  bookingsDaytrip BookingDaytrip[]
-
-}
-// This is your Prisma schema file,
+// This is your Prisma schema file, (commit de prueba para forzar update en Vercel)
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 generator client {
   provider = "prisma-client-js"
 }
+
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
@@ -47,105 +13,70 @@ datasource db {
 model User {
   id        String   @id @default(cuid())
   email     String   @unique
-  role      String   @default("USER")
-  passwordHash String?
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  bookings    Booking[]
-  bookingsDaytrip BookingDaytrip[]
-  favorites   Favorite[]
+  listings      Listing[]
+  favorites     Favorite[]
   savedSearches SavedSearch[]
-
-  boats        Boat[] @relation("UserBoats")
-  daytrips     Daytrip[]
-  pushTokens   PushToken[]
+  messages      Message[]
 }
 
-model Boat {
-  id          String   @id @default(cuid())
-  name        String
-  type        String   // yacht, speedboat, jetski, etc.
-  description String?
-  price       Float
-  pricePerDay Float    @default(0)
-  location    String
-  neighborhood String?
-  latitude    Float?
-  longitude   Float?
-  capacity    Int
-  imageUrl    String?
-  images      String?
-  available   Boolean  @default(true)
-  published   Boolean  @default(false)
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+model Listing {
+  id                String   @id @default(cuid())
+  title             String
+  description       String?
+  price             Int
+  city              String
+  neighborhood      String?
+  availableFrom     DateTime
+  rooms             Int
+  hasBillsIncluded  Boolean  @default(false)
+  allowsPets        Boolean  @default(false)
+  coverImage        String?
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
 
-  ownerId     String
-  owner       User     @relation("UserBoats", fields: [ownerId], references: [id])
+  userId String
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
 
-  bookings    Booking[]
-  favorites   Favorite[]
-}
-
-model Booking {
-  id        String   @id @default(cuid())
-  bookingNumber String? @unique
-  userId    String
-  boatId    String
-  startDate DateTime
-  endDate   DateTime
-  status    String   @default("pending") // pending, confirmed, cancelled
-  totalPrice Float
-  currency   String   @default("COP")
-  paymentProvider String? @default("none")
-  paymentReference String?
-  paymentStatus String   @default("pending") // pending, pending_payment, paid, failed, cancelled
-  paymentCheckoutUrl String?
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  user User @relation(fields: [userId], references: [id])
-  boat Boat @relation(fields: [boatId], references: [id], onDelete: Cascade)
+  favorites Favorite[]
+  messages  Message[]
 }
 
 model Favorite {
-  id     String @id @default(cuid())
-  userId String
-  boatId String
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
 
-  user User @relation(fields: [userId], references: [id])
-  boat Boat @relation(fields: [boatId], references: [id], onDelete: Cascade)
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 
-  @@unique([userId, boatId])
+  listingId String
+  listing   Listing  @relation(fields: [listingId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, listingId])
 }
 
 model SavedSearch {
   id        String   @id @default(cuid())
-  userId    String
   query     String
+  filters   Json?
   createdAt DateTime @default(now())
 
-  user User @relation(fields: [userId], references: [id])
+  userId String
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
-model Otp {
-  id        String   @id @default(cuid())
-  email     String
-  code      String
-  expiresAt DateTime
-  used      Boolean  @default(false)
-  createdAt DateTime @default(now())
+model Message {
+  id             String   @id @default(cuid())
+  text           String
+  createdAt      DateTime @default(now())
 
-  @@unique([email, code])
-}
+  senderId String
+  sender   User   @relation(fields: [senderId], references: [id], onDelete: Cascade)
 
-model PushToken {
-  id        String   @id @default(cuid())
-  userId    String   @unique
-  token     String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  listingId String
+  listing   Listing  @relation(fields: [listingId], references: [id], onDelete: Cascade)
 
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  conversationId String
 }
