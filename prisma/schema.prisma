@@ -13,6 +13,8 @@ datasource db {
 model User {
   id        String   @id @default(cuid())
   email     String   @unique
+  role      String   @default("USER")
+  passwordHash String?
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
@@ -20,6 +22,11 @@ model User {
   favorites     Favorite[]
   savedSearches SavedSearch[]
   messages      Message[]
+  boats         Boat[]
+  bookings      Booking[]
+  bookingsDaytrip BookingDaytrip[]
+  daytrips      Daytrip[]
+  pushTokens    PushToken[]
 }
 
 model Listing {
@@ -51,10 +58,10 @@ model Favorite {
   userId    String
   user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 
-  listingId String
-  listing   Listing  @relation(fields: [listingId], references: [id], onDelete: Cascade)
+  boatId String
+  boat   Boat  @relation(fields: [boatId], references: [id], onDelete: Cascade)
 
-  @@unique([userId, listingId])
+  @@unique([userId, boatId])
 }
 
 model SavedSearch {
@@ -79,4 +86,85 @@ model Message {
   listing   Listing  @relation(fields: [listingId], references: [id], onDelete: Cascade)
 
   conversationId String
+}
+
+model Boat {
+  id          String   @id @default(cuid())
+  name        String
+  description String?
+  price       Float
+  capacity    Int
+  location    String
+  published   Boolean  @default(false)
+  ownerId     String
+  owner       User     @relation(fields: [ownerId], references: [id])
+  images      String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  favorites   Favorite[]
+  bookings    Booking[]
+}
+
+model Booking {
+  id        String   @id @default(cuid())
+  userId    String
+  boatId    String
+  startDate DateTime
+  endDate   DateTime
+  totalPrice Float
+  currency   String   @default("COP")
+  status    String   @default("pending") // pending, confirmed, cancelled
+  paymentProvider String? @default("none")
+  paymentReference String?
+  paymentStatus String   @default("pending") // pending, pending_payment, paid, failed, cancelled
+  paymentCheckoutUrl String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id])
+  boat Boat @relation(fields: [boatId], references: [id], onDelete: Cascade)
+}
+
+model Daytrip {
+  id          String   @id @default(cuid())
+  title       String
+  description String?
+  price       Float
+  duration    String
+  horaSalida  String?
+  horaRetorno String?
+  published   Boolean  @default(false)
+  ownerId     String
+  owner       User     @relation(fields: [ownerId], references: [id])
+  images      String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  bookingsDaytrip BookingDaytrip[]
+}
+
+model BookingDaytrip {
+  id        String   @id @default(cuid())
+  bookingNumber String? @unique
+  userId    String
+  daytripId String
+  status    String   @default("pending") // pending, confirmed, cancelled
+  totalPrice Float
+  currency   String   @default("COP")
+  paymentProvider String? @default("none")
+  paymentReference String?
+  paymentStatus String   @default("pending") // pending, pending_payment, paid, failed, cancelled
+  paymentCheckoutUrl String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id])
+  daytrip Daytrip @relation(fields: [daytripId], references: [id], onDelete: Cascade)
+}
+
+model PushToken {
+  id        String   @id @default(cuid())
+  token     String   @unique
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
 }
