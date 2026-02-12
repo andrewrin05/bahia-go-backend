@@ -47,7 +47,6 @@ model Listing {
   userId String
   user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
 
-  favorites Favorite[]
   messages  Message[]
 }
 
