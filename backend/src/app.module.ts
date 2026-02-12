@@ -10,7 +10,7 @@ import { AppController } from './app.controller';
     ConfigModule.forRoot({ isGlobal: true }),
     PrismaModule,
     AuthModule,
-    ListingsModule,
+    // ListingsModule, // commented out for testing
   ],
   controllers: [AppController],
 })
