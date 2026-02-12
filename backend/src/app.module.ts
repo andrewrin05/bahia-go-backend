@@ -8,7 +8,7 @@ import { AppController } from './app.controller';
 @Module({
   imports: [
     ConfigModule.forRoot({ isGlobal: true }),
-    PrismaModule,
+    // PrismaModule, // commented out for testing
     // AuthModule, // commented out for testing
     // ListingsModule, // commented out for testing
   ],
