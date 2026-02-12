@@ -6,4 +6,9 @@ export class AppController {
   getHello(): string {
     return 'Bahía Go Backend is running!';
   }
+
+  @Get('health')
+  getHealth(): string {
+    return 'OK';
+  }
 }
