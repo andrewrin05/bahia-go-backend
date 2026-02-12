@@ -9,7 +9,8 @@
     "node": "24.x"
   },
   "scripts": {
-    "build": "prisma generate && nest build",
+    "build": "nest build",
+    "prebuild": "prisma generate",
     "build:heroku": "prisma generate && nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "nest start",
